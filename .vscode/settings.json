@@ -1,0 +1,18 @@
+{
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default",
+                "enableSsl": "Disabled"
+            },
+            "previewLimit": 50,
+            "server": "192.168.50.189",
+            "port": 3306,
+            "driver": "MySQL",
+            "username": "animal",
+            "database": "PortfolioDatabase",
+            "name": "Portfolio - Server:192.186.50.189",
+            "password": "TeamAnimal^3"
+        }
+    ]
+}
