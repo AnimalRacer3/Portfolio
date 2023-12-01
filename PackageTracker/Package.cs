@@ -2,10 +2,10 @@ using System;
 
 public class Package
 {
-    public int PackageID {get; private set;}
-    public string Sender {get; private set;}
-    public string Receiver {get; private set;}
-    public string Status {get; private set;}
-    public float Weight {get; private set;}
-    public DateTime DeliveryDate {get; private set;}
+    public int PackageID {get; set;}
+    public string Sender {get; set;}
+    public string Receiver {get; set;}
+    public string Status {get; set;}
+    public float Weight {get; set;}
+    public DateTime DeliveryDate {get; set;}
 }

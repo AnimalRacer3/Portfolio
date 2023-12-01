@@ -6,13 +6,13 @@
                 "enableSsl": "Disabled"
             },
             "previewLimit": 50,
-            "server": "192.168.50.189",
+            "server": "myserver",
             "port": 3306,
             "driver": "MySQL",
             "name": "Portfolio Database",
             "database": "PortfolioDatabase",
             "username": "animal",
-            "password": "TeamAnimal^3"
+            "askForPassword": true
         }
     ]
 }
