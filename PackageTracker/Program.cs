@@ -1,29 +1,12 @@
-﻿class using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+﻿using System;
+using PackageTracker.Models;
 
 namespace PackageTracker
 {
-    public class Program
+    class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
-            using (var context = new PackageDbContext())
-            {
-                CreatePackage(context, "John Doe", "Jane Doe", "In Transit", "3.73")
-                DisplayPackages(context);
-                UpdatePackage(context, 1, "In Delivery");
-                DisplayPackage(context);
-                DeletePackage(context, 1);
-                DisplayPackage(context);
-            }
         }
-
-        public static coid CreatePackage(PackageDbContext context, string sender, string receiver, float weight)
     }
 }
