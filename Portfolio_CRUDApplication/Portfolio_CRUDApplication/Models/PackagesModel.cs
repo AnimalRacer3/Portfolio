@@ -1,77 +1,21 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using Microsoft.EntityFrameworkCore.Design;
+using PackageTracker.Common;
+using PackageTracker.Presenters.Common;
 
 namespace PackageTracker.Models
 {
-    public enum WeightUnit
-    {
-        [Description("Kilogram")]
-        Kilogram,
-        [Description("Pound")]
-        Pound,
-        [Description("Ounce")]
-        Ounce,
-        [Description("Gram")]
-        Gram
-    }
-    public enum StatusEnum
-    {
-        [Description("Exception")]
-        Exception,
-
-        [Description("FailedDeliveryAttempts")]
-        FDA,
-
-        [Description("LabelRejected")]
-        LRejected,
-
-        [Description("LabelPending")]
-        LPending,
-
-        [Description("LabelReady")]
-        LReady,
-
-        [Description("DropOffInProgress")]
-        DOP,
-
-        [Description("PendingTrackingEvent")]
-        PTE,
-
-        [Description("TrackingInfoReceived")]
-        TIR,
-
-        [Description("InTransit")]
-        InTransit,
-
-        [Description("DeliveryExpected")]
-        Expected
-    }
-
-    [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter, AllowMultiple = false)]
-    public class FutureDateAttribute : ValidationAttribute
-    {
-        public override bool IsValid(object value)
-        {
-            if (value is DateTime date)
-            {
-                return date > DateTime.Now;
-            }
-
-            return false;
-        }
-    }
     public class PackageModel
     {
         // Fields
-        private string status;
+        private string status = Enum.GetName(typeof(Constants.StatusEnum), 3);
         private int packageID;
-        private string sender;
-        private string receiver;
+        private string sender = "";
+        private string receiver = "";
         private decimal weight;
         private DateTime? deliveryDate;
-        private string weightUnits;
+        private string weightUnits = Enum.GetName(typeof(Constants.WeightUnitAbr), 1);
         private DateTime? sentDate;
         private DateTime? createdDate;
 
@@ -81,6 +25,7 @@ namespace PackageTracker.Models
         public int PackageID
         {
             get { return packageID; }
+            set { packageID = value; }
         }
         [DisplayName("Sender's Name")]
         [Required(ErrorMessage = "Sender's name is required")]
@@ -88,7 +33,7 @@ namespace PackageTracker.Models
         public string Sender
         {
             get { return sender; }
-            protected set { sender = value; }
+            set { sender = value; }
         }
         [DisplayName("Receiver's Name")]
         [Required(ErrorMessage = "Receiver's name is required")]
@@ -96,7 +41,7 @@ namespace PackageTracker.Models
         public string Receiver
         {
             get { return receiver; }
-            protected set { receiver = value; }
+            set { receiver = value; }
         }
         [DisplayName("Package Weight")]
         [Required(ErrorMessage = "Weight of package is required")]
@@ -104,7 +49,7 @@ namespace PackageTracker.Models
         public decimal Weight
         {
             get { return weight; }
-            protected set { weight = value; }
+            set { weight = value; }
         }
         [DisplayName("Delivery Date")]
         [DataType(DataType.DateTime, ErrorMessage = "Invalid date format")]
@@ -112,34 +57,36 @@ namespace PackageTracker.Models
         public DateTime? DeliveryDate
         {
             get { return deliveryDate; }
-            protected set { deliveryDate = value; }
+            set { deliveryDate = value; }
         }
         [DisplayName("Unit of Measurement for Weight")]
         [Required(ErrorMessage = "What type of unit the package weight is required")]
-        [EnumDataType(typeof(WeightUnit), ErrorMessage = "Invalid weight unit")]
+        [EnumDataType(typeof(Constants.WeightUnit), ErrorMessage = "Invalid weight unit")]
         public string WeightUnits
         {
             get { return weightUnits; }
-            protected set { weightUnits = value; }
+            set { weightUnits = value; }
         }
         [DisplayName("Sent Date")]
         public DateTime? SentDate
         {
             get { return sentDate; }
+            set { sentDate = value; }
         }
         [DisplayName("Date package was created")]
         public DateTime? CreatedDate
         {
             get { return createdDate; }
+            set { createdDate = value; }
         }
 
         [DisplayName("Status of Delivery")]
         [Required(ErrorMessage = "Status of delivery is required")]
-        [EnumDataType(typeof(StatusEnum), ErrorMessage = "Invalid Status")]
+        [EnumDataType(typeof(Constants.StatusEnum), ErrorMessage = "Invalid Status")]
         public string Status
         {
             get { return status; }
-            protected set { status = value; }
+            set { status = value; }
         }
 
         public override string ToString()

@@ -10,9 +10,11 @@ namespace PackageTracker.Models
     {
         void Add(PackageModel packageModel);
         void Edit(PackageModel packageModel);
+        void UpdateStatus(PackageModel packageModel);
+        void AddWithDelivery(PackageModel packageModel);
         void Delete(int id);
 
         IEnumerable<PackageModel> GetAll();
-        IEnumerable<PackageModel> GetByValue();
+        IEnumerable<PackageModel> GetByValue(string value);
     }
 }

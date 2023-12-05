@@ -1,7 +1,7 @@
 using System;
-using System.threading;
+using System.Threading;
 
-namespace Libraries
+namespace PackageTracker.Common
 {
     public class DelayHelper
     {
